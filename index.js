@@ -183,7 +183,7 @@ module.exports.unique = unique;
  * Runs every value in a collection in a function. Returns an array with all the values that returned true.
  * 
  * @param {Array or Object} collection: An array or object as collection.
- * @param {Function} test: A function to run every value in the collection through.
+ * @param {Function} test: A function that will be ran through every value, index, and collection.
  * @return: {Array}: An array with all the values in the collection that returned true when ran through the function.
  */ 
 
@@ -205,7 +205,7 @@ module.exports.filter = filter;
  * Runs every value in a collection in a function. Returns an array with all the values that returned false.
  * 
  * @param {Array or Object} collection: An array or object as collection.
- * @param {Function} test: A function to run every value in the collection through.
+ * @param {Function} test:  A function that will be ran through every value, index, and collection.
  * @return {Array}: An array with all the values in the collection that returned false when ran through the function.
  */
  
@@ -290,6 +290,7 @@ module.exports.pluck = pluck;
  * 
  * @param {Array or Object} collection: An array or object as collection.
  * @param {Function} func: A function that will be ran through every value in the collection.
+ * If this argument is not given, the function will check if every value is truthy or falsy, and return false if any of them are falsy.
  * @return {Boolean}: A true or false boolean depending on if every value returns true.
  */ 
  
@@ -309,10 +310,11 @@ function every(collection, func) {
  * some:
  * 
  * Runs every value in a collection through a function. If even one value returns true it will return true, if not it will return false.
- * If a function argument is not given it will return true if at least one element is truthy.
+ * 
  * 
  * @param {Array or Object} collection: An array or object as collection.
  * @param {Function} func: A function that will be run through every index in the collection.
+ * If a function argument is not given it will return true if at least one element is truthy.
  * @return {Boolean}:  Boolean value depending on whether or not one of the values returns true.
  */ 
  
